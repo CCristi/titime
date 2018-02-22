@@ -4,8 +4,7 @@ import AnonProvider from '../auth/anon-provider';
 
 export default class RestClient {
   constructor(methodsMap = {}, options = {}) {
-    this.options = options;
-    this.options.authProvider = Object.assign(RestClient.defaults, options);
+    this.options = Object.assign(RestClient.defaults, options);
 
     this.createApiMethods(methodsMap);
   }

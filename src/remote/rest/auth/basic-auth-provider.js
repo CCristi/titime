@@ -8,9 +8,13 @@ export default class BasicAuthProvider {
     const signedRequestConfig = Object.assign({}, requestConfig);
 
     signedRequestConfig.headers = Object.assign(signedRequestConfig.headers || {}, {
-      Authorization: `Basic ${new Buffer(`${this.username}:${this.password}`).toString('base64')}`,
+      Authorization: `Basic ${this.btoa(`${this.username}:${this.password}`)}`,
     });
 
     return signedRequestConfig;
+  }
+
+  btoa(str) { // eslint-disable-line
+    return new Buffer(str).toString('base64');
   }
 }
